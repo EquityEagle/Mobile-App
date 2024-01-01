@@ -2,16 +2,18 @@
   "expo": {
     "name": "EquityEagle",
     "slug": "equityeagle",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/equityeagle-logo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splash-logo.png",
       "resizeMode": "contain",
-      "backgroundColor": "#1E293B"
+      "backgroundColor": "#050505"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -20,7 +22,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.kingrashy64.equityeagle"
+      "package": "com.kingrashy64.equityeagle",
+      "versionCode": 2
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -29,6 +32,12 @@
       "eas": {
         "projectId": "53c819d7-a1c8-4126-975d-d37ac57d780b"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/53c819d7-a1c8-4126-975d-d37ac57d780b"
     }
   },
   "build": {

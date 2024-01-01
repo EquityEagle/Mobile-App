@@ -51,7 +51,6 @@ export const HeaderTitle = () => {
         style={{
           color: "blue",
           fontWeight: "500",
-          transform: "translateX(10px)",
         }}
       >
         Eagle
