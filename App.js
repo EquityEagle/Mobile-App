@@ -1,20 +1,89 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, ToastAndroid } from "react-native";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { Chat, DashBoard, Idea, Login, Mertix, Register } from "./pages";
+import { BottomNav, Dash } from "./components";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { globalStyles } from "./styles/global";
+import { findAllAccount } from "./redux/accounts";
+import * as SplashScreen from "expo-splash-screen";
+import { DashImg, HeaderTitle } from "./components/headerIcon/Dash";
+
+// SplashScreen.preventAutoHideAsync();
+// setTimeout(SplashScreen.hideAsync, 3000);
+
+const Stack = createStackNavigator();
 
 export default function App() {
+  const navigation = useNavigation();
+  const auth = useSelector((state) => state.AUTH);
+  const dispatch = useDispatch();
+  const userId = auth.id;
+
+  useEffect(() => {
+    if (auth.userLoaded) {
+      navigation.navigate("DashBoard");
+    } else {
+      navigation.navigate("Login");
+    }
+  }, [auth.userLoaded]);
+
+  useEffect(() => {
+    if (auth.userLoaded) {
+      dispatch(findAllAccount(userId));
+    } else {
+      return ToastAndroid.show("Login to see accounts", ToastAndroid.SHORT);
+    }
+  }, [auth.userLoaded]);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Stack.Navigator>
+      <Stack.Screen
+        name="DashBoard"
+        options={{
+          title: <HeaderTitle />,
+          headerTitleAlign: "center",
+          headerRight: () => <Dash />,
+          headerLeft: () => <DashImg />,
+          headerStyle: { backgroundColor: "#000" },
+          headerShadowVisible: true,
+        }}
+        component={DashBoard}
+      />
+      <Stack.Screen
+        name="Ideas"
+        options={{
+          title: "",
+          headerLeft: () => null,
+          headerStyle: { backgroundColor: globalStyles.colors.bg },
+        }}
+        component={Idea}
+      />
+      <Stack.Screen name="Chats" options={{ title: "" }} component={Chat} />
+      <Stack.Screen
+        name="Metrix"
+        options={{
+          title: <HeaderTitle />,
+          headerTitleAlign: "center",
+          headerStyle: { backgroundColor: "#000" },
+          headerShadowVisible: true,
+          headerLeftContainerStyle: { backgroundColor: "#fff" },
+        }}
+        component={Mertix}
+      />
+      <Stack.Screen name="Login" options={{ title: "" }} component={Login} />
+      <Stack.Screen
+        name="SignUp"
+        options={{ title: "" }}
+        component={Register}
+      />
+    </Stack.Navigator>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "rgba(0,0,0,0.91)",
   },
 });
