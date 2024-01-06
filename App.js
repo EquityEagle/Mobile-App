@@ -37,13 +37,13 @@ export default function App() {
     }
   }, [auth.userLoaded]);
 
-  // useEffect(() => {
-  //   if (auth.userLoaded) {
-  //     dispatch(findAllAccount(userId));
-  //   } else {
-  //     return ToastAndroid.show("Login to see accounts", ToastAndroid.SHORT);
-  //   }
-  // }, [auth.userLoaded]);
+  useEffect(() => {
+    if (auth.userLoaded) {
+      dispatch(findAllAccount(userId));
+    } else {
+      return ToastAndroid.show("Login to see accounts", ToastAndroid.SHORT);
+    }
+  }, [auth.userLoaded]);
 
   return (
     <Stack.Navigator>

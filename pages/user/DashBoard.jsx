@@ -9,12 +9,14 @@ import { findAllAccount } from "../../redux/accounts";
 const DashBoard = () => {
   const user = useSelector((state) => state.AUTH);
 
+  const userId = user.id;
+
   const [refreshing, setRefreshing] = useState(false);
   const dispatch = useDispatch();
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
-    dispatch(findAllAccount(user.id));
+    dispatch(findAllAccount(userId));
     setTimeout(() => {
       setRefreshing(false);
     }, 2000);

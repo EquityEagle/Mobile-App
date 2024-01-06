@@ -34,7 +34,7 @@ const MetrixContainer = () => {
   return (
     <View style={StyledMetrix.container}>
       <MetrixHeader refreshdata={reLoad} />
-      <MetrixChart metrixId={metrixId} />
+      <MetrixChart trades={trades} metrixId={metrixId} />
       <View style={{ padding: 12, gap: 10 }}>
         <TradingObjection metrix={metrix} trades={trades} />
         <Statistics metrix={metrix} trades={trades} balance={balance} />

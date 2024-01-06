@@ -6,12 +6,14 @@ import { FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
 import { saveId } from "../../redux/accounts";
+import { getEquity } from "../../libs/functions/metrix";
 
 const AccountsItem = ({ account }) => {
+  const trades = account.trades;
   const navigation = useNavigation();
   const [toggled, setToggled] = useState(false);
   const dispatch = useDispatch();
-
+  const equity = getEquity(trades, account.accountsize);
   return (
     <View style={StyledDash.accountContainer}>
       <View style={StyledDash.accounts}>
@@ -41,7 +43,7 @@ const AccountsItem = ({ account }) => {
             </Text>
             <Text style={StyledDash.innerText}>
               Equity:
-              <Text style={StyledDash.balanceText}> $25,000</Text>
+              <Text style={StyledDash.balanceText}> {equity?.toFixed(2)}</Text>
             </Text>
           </View>
         )}

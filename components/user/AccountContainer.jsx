@@ -1,5 +1,11 @@
 import React from "react";
-import { ActivityIndicator, FlatList, StyleSheet, View } from "react-native";
+import {
+  ActivityIndicator,
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import AccountsItem from "../../pages/user/AccountsItem";
 import { useSelector } from "react-redux";
 import { FontAwesome5 } from "@expo/vector-icons";
@@ -22,7 +28,10 @@ const AccountContainer = () => {
           size={40}
           style={styledContainer.load}
         />
+      ) : empty ? (
+        <Text></Text>
       ) : (
+        accountMap &&
         accountMap.map((acc, index) => (
           <AccountsItem account={acc} key={index} />
         ))

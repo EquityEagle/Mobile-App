@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { PriceChart } from "../../libs";
 import { getAccountsProfitData } from "../../helper/get";
 
-const MetrixChart = ({ metrixId }) => {
+const MetrixChart = ({ metrixId, trades }) => {
+  const [profitdata, setProfitData] = useState([]);
+
   useEffect(() => {
     const gettrades = async () => {
       const data = await getAccountsProfitData(metrixId);
@@ -12,11 +14,11 @@ const MetrixChart = ({ metrixId }) => {
     if (metrixId) {
       gettrades();
     } else return;
-  }, [metrixId]);
+  }, [trades]);
 
   return (
     <View style={chartStyle.conatiner}>
-      <PriceChart />
+      <PriceChart profitdata={profitdata} />
     </View>
   );
 };

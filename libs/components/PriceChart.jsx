@@ -1,15 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { LineChart } from "react-native-chart-kit";
 import { Dimensions, View } from "react-native";
 import { globalStyles } from "../../styles/global";
 
 const PriceChart = ({ profitdata }) => {
   const screenWidth = Dimensions.get("window").width;
+  const [dataSet, setDataSet] = useState(false);
+  const profitValues = profitdata && profitdata.map((item) => item.profit);
+  const formattedLabels = profitdata.map((item) => {
+    const date = new Date(item.createdAt);
+    return `${date.getMonth() + 1}/${date.getDate()}`;
+  });
+
+  useEffect(() => {
+    if (profitdata) {
+      setDataSet(true);
+    } else {
+      setDataSet(false);
+    }
+  });
+
   const data = {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: formattedLabels,
     datasets: [
       {
-        data: [20, 45, 28, 80, 99, 43, 133],
+        data: dataSet ? profitValues : [78, 90, 130, 57, 54],
       },
     ],
   };
