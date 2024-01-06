@@ -1,3 +1,5 @@
+import { StyleSheet } from "react-native";
+
 export const globalStyles = {
   colors: {
     bg: "rgba(0,0,0,0.91)",
@@ -20,3 +22,10 @@ export const globalStyles = {
     blue600: "rgb(37 99 235)",
   },
 };
+
+export const GlobalStyles = StyleSheet.create({
+  loader: {
+    justifyContent: "center",
+    height: 500,
+  },
+});

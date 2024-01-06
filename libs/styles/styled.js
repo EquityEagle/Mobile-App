@@ -103,3 +103,77 @@ export const styledInputL = StyleSheet.create({
     height: 40,
   },
 });
+
+export const StyledIconWrap = StyleSheet.create({
+  container: {
+    position: "relative",
+  },
+  wrap: {
+    flexDirection: "row",
+    gap: 2,
+    alignItems: "center",
+    padding: 2,
+    justifyContent: "center",
+    borderRadius: 3,
+  },
+  wrapText: {
+    fontWeight: "500",
+  },
+});
+
+export const StyledPairSelect = StyleSheet.create({
+  container: {
+    gap: 15,
+    position: "relative",
+  },
+  selectText: {
+    color: "#fff",
+    fontWeight: "400",
+    fontSize: 17,
+  },
+  selectCon: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+    padding: 9,
+    borderRadius: 8,
+    backgroundColor: globalStyles.colors.neutral800,
+  },
+});
+
+export const StyledImagePicker = StyleSheet.create({
+  image: {
+    width: "100%",
+    height: 300,
+    borderRadius: 9,
+    position: "relative",
+  },
+  pickContainer: {
+    position: "relative",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    height: 300,
+    backgroundColor: globalStyles.colors.slate800,
+    borderRadius: 9,
+  },
+  selectCon: {
+    flexDirection: "row",
+    gap: 10,
+    alignItems: "center",
+  },
+  selectText: {
+    color: "#fff",
+    fontWeight: "400",
+    fontSize: 17,
+  },
+});
+
+export const styledPairsConatiner = StyleSheet.create({
+  container: {
+    backgroundColor: "#fff",
+    width: "80%",
+    height: "80%",
+    borderRadius: 9,
+  },
+});

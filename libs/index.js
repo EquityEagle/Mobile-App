@@ -9,3 +9,6 @@ export { default as CustomTitle } from "./components/CustomTitle";
 export { default as InputsWithLabel } from "./components/InputsWithLabel";
 export { default as Divider } from "./components/Divider";
 export { default as PriceChart } from "./components/PriceChart";
+export { default as ActionButton } from "./components/ActionButton";
+export { default as ActionModal } from "./components/ActionModal";
+export { default as PairSelect } from "./components/PairSelect";

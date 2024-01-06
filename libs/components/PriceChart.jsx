@@ -3,7 +3,7 @@ import { LineChart } from "react-native-chart-kit";
 import { Dimensions, View } from "react-native";
 import { globalStyles } from "../../styles/global";
 
-const PriceChart = () => {
+const PriceChart = ({ profitdata }) => {
   const screenWidth = Dimensions.get("window").width;
   const data = {
     labels: ["January", "February", "March", "April", "May", "June"],

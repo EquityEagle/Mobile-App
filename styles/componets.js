@@ -142,3 +142,68 @@ export const StyledMetrix = StyleSheet.create({
     fontSize: 13,
   },
 });
+
+export const StyledIdeas = StyleSheet.create({
+  container: {
+    width: "100%",
+    height: "100%",
+    position: "relative",
+    marginTop: 1,
+    gap: 1,
+  },
+  ideaContainer: {
+    gap: 10,
+    padding: 1,
+    width: "100%",
+    position: "relative",
+    backgroundColor: "#000",
+  },
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    padding: 10,
+    alignItems: "center",
+  },
+  infoWrap: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+  },
+  infoText: {
+    color: "#fff",
+    fontWeight: "600",
+  },
+  infoTextDate: {
+    color: globalStyles.colors.neutral600,
+    fontWeight: "500",
+    fontSize: 13,
+  },
+  details: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+    padding: 10,
+  },
+  pairText: {
+    padding: 3,
+    color: "#fff",
+    backgroundColor: globalStyles.colors.slate600,
+    borderRadius: 6,
+  },
+  detailsText: {
+    color: "#fff",
+    fontWeight: "400",
+  },
+  detailsImg: {
+    width: "100%",
+    height: 300,
+    borderRadius: 9,
+  },
+  actionButtonsContainer: {
+    flexDirection: "row",
+    position: "relative",
+    width: "100%",
+    justifyContent: "space-evenly",
+    padding: 10,
+  },
+});

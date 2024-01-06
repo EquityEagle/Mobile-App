@@ -57,3 +57,35 @@ export function getChatUser(chat, userid) {
 
   return person;
 }
+
+export function formatTimestamp(timestamp) {
+  const now = new Date();
+  const targetTime = new Date(timestamp);
+
+  const timeDifference = now - targetTime;
+  const minutes = Math.floor(timeDifference / (1000 * 60));
+  const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+  const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+  if (minutes < 1) {
+    return "Just now";
+  } else if (minutes < 60) {
+    return `${minutes} ${minutes === 1 ? "minute" : "minutes"} ago`;
+  } else if (hours < 24) {
+    return `${hours} ${hours === 1 ? "hour" : "hours"} ago`;
+  } else {
+    return `${days} ${days === 1 ? "day" : "days"} ago`;
+  }
+}
+
+export function generateNumericId(length = 8) {
+  const characters = "0123456789";
+  let numericId = "";
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    numericId += characters.charAt(randomIndex);
+  }
+
+  return numericId;
+}

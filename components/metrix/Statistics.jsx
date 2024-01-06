@@ -12,21 +12,7 @@ import {
   getRRR,
 } from "../../libs/functions/metrix";
 
-const Statistics = ({ metrix }) => {
-  const balance = metrix.balance;
-  const metrixId = metrix._id;
-  const [trades, setTrades] = useState([]);
-
-  useEffect(() => {
-    const gettrades = async () => {
-      const data = await getAccountTrades(metrixId);
-      setTrades(data);
-    };
-    if (metrix._id) {
-      gettrades();
-    } else return;
-  }, [trades]);
-
+const Statistics = ({ metrix, trades, balance }) => {
   const totalTrade = trades.length;
   const equity = getEquity(trades, balance);
   const avaP = getAverageProfit(trades);

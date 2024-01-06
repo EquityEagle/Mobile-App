@@ -54,9 +54,11 @@ export default function App() {
       <Stack.Screen
         name="Ideas"
         options={{
-          title: "",
-          headerLeft: () => null,
-          headerStyle: { backgroundColor: globalStyles.colors.bg },
+          title: <HeaderTitle />,
+          headerTitleAlign: "center",
+          headerLeft: () => <DashImg />,
+          headerStyle: { backgroundColor: "#000" },
+          headerShadowVisible: true,
         }}
         component={Idea}
       />

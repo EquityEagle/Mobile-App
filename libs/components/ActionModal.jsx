@@ -1,9 +1,9 @@
 import React from "react";
 import { View } from "react-native";
 import Modal from "react-native-modal";
-import { StyledActionModal } from "./styled";
+import { StyledActionModal } from "../../modals/styled";
 
-const BottomActionSheet = ({ isVisible, onClose, body }) => {
+const ActionModal = ({ isVisible, onClose, body }) => {
   return (
     <Modal
       isVisible={isVisible}
@@ -25,4 +25,4 @@ const BottomActionSheet = ({ isVisible, onClose, body }) => {
   );
 };
 
-export default BottomActionSheet;
+export default ActionModal;

@@ -7,21 +7,8 @@ import { tradedata } from "../../constant/trades";
 import Trades from "./Trades";
 import { getAccountTrades } from "../../helper/get";
 
-const TradingJournal = ({ metrix }) => {
+const TradingJournal = ({ metrix, trades }) => {
   const renderItem = ({ item }) => <Trades trade={item} />;
-
-  const metrixId = metrix._id;
-  const [trades, setTrades] = useState([]);
-
-  useEffect(() => {
-    const gettrades = async () => {
-      const data = await getAccountTrades(metrixId);
-      setTrades(data);
-    };
-    if (metrix._id) {
-      gettrades();
-    } else return;
-  }, [trades]);
 
   return (
     <View style={StyledMetrix.tjournalContainer}>
@@ -41,11 +28,14 @@ const TradingJournal = ({ metrix }) => {
         <Text style={StyledMetrix.detailsText}>Edit</Text>
       </View>
       <Divider />
-      <FlatList
+      {/* <FlatList
         data={trades}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id?.toString()}
-      />
+        keyExtractor={(item) => item._id?.toString()}
+      /> */}
+      {trades.map((trade, index) => (
+        <Trades trade={trade} key={index} />
+      ))}
     </View>
   );
 };

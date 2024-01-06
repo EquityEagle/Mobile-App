@@ -19,3 +19,8 @@ export async function getAccountsProfitData(metrixId) {
   );
   return response?.data;
 }
+
+export async function getSetupActions(setupId) {
+  const response = await axios.get(`${BASE_URL}/setup/like/comment/${setupId}`);
+  return response?.data;
+}

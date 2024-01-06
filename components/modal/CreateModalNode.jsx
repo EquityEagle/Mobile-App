@@ -4,15 +4,21 @@ import { StyledModal } from "../../styles/componets";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
-import { useCreateModal, useJournalModal } from "../../hook";
+import { useCreateModal, useIdeaModal, useJournalModal } from "../../hook";
 
 const CreateModalNode = ({ close }) => {
   const createmodal = useCreateModal();
   const journalmodal = useJournalModal();
+  const ideamodal = useIdeaModal();
 
   function openJ() {
     createmodal.onClose();
     journalmodal.onOpen();
+  }
+
+  function openI() {
+    createmodal.onClose();
+    ideamodal.onOpen();
   }
 
   return (
@@ -24,7 +30,7 @@ const CreateModalNode = ({ close }) => {
         </TouchableOpacity>
       </View>
       <View style={StyledModal.content}>
-        <TouchableOpacity style={StyledModal.contentItem}>
+        <TouchableOpacity onPress={openI} style={StyledModal.contentItem}>
           <FontAwesome5 name="brain" size={20} color="#fff" />
           <Text style={StyledModal.contextText}>Share Idea</Text>
         </TouchableOpacity>

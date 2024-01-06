@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { StyledModal } from "../../styles/componets";
 import { Ionicons } from "@expo/vector-icons";
@@ -11,23 +11,33 @@ import { SaveTrack } from "../../redux/accounts";
 const JournalModal = () => {
   const journamodal = useJournalModal();
   const open = journamodal.isOpen;
-  const user = useSelector((state) => state.AUTH);
+  const userid = useSelector((state) => state.AUTH.id);
   const accState = useSelector((state) => state.ACC);
   const dispatch = useDispatch();
   const isLoading = accState.TRACK_STATUS === "Pending";
+
+  const [userId, setUserId] = useState("");
+
+  useEffect(() => {
+    if (userid) {
+      setUserId(userid);
+    } else {
+      console.log("No userId found");
+    }
+  }, [userid]);
 
   function close() {
     journamodal.onClose();
   }
 
   const [data, setData] = useState({
-    userId: user.id,
+    userId: userId,
     accountsize: "",
     accounttype: "",
   });
 
   function track() {
-    dispatch(SaveTrack(data));
+    dispatch(SaveTrack(data, userId));
     setTimeout(() => {
       setData((prev) => ({
         ...prev,

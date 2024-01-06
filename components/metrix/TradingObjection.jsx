@@ -10,19 +10,8 @@ import {
 } from "../../libs/functions/metrix";
 import { formatNumberWithK } from "../../libs/functions";
 
-const TradingObjection = ({ metrix }) => {
+const TradingObjection = ({ metrix, trades }) => {
   const metrixId = metrix._id;
-  const [trades, setTrades] = useState([]);
-
-  useEffect(() => {
-    const gettrades = async () => {
-      const data = await getAccountTrades(metrixId);
-      setTrades(data);
-    };
-    if (metrix._id) {
-      gettrades();
-    } else return;
-  }, [trades]);
 
   const days = metrix.days;
   const loss = calTotalLoss(trades);
