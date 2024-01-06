@@ -4,6 +4,8 @@ import { Feather } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../redux/authSlice";
 import { EELogo, placeholderImg } from "../../assets";
+import { useNavigation } from "@react-navigation/native";
+import { AntDesign } from "@expo/vector-icons";
 
 const Dash = () => {
   const auth = useSelector((state) => state.AUTH);
@@ -56,5 +58,18 @@ export const HeaderTitle = () => {
         Eagle
       </Text>
     </View>
+  );
+};
+
+export const IdeaLeft = () => {
+  const navigation = useNavigation();
+
+  return (
+    <TouchableOpacity
+      onPress={() => navigation.goBack()}
+      style={{ marginLeft: 15, marginTop: 5 }}
+    >
+      <AntDesign name="arrowleft" size={24} color="#fff" />
+    </TouchableOpacity>
   );
 };

@@ -14,6 +14,7 @@ const initialState = {
   VIEWD_ERROR: null,
   COMMENT_STATUS: null,
   COMMENT_ERROR: null,
+  Id: "",
 };
 
 export const getSetups = createAsyncThunk("setup/all", async (id) => {
@@ -88,7 +89,11 @@ export const commentSetup = createAsyncThunk("setup/comment", async (data) => {
 const IdeaSlice = createSlice({
   name: "setup",
   initialState,
-  reducers: {},
+  reducers: {
+    pushId: (state, action) => {
+      state.Id = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(publishSetup.pending, (state, action) => {
       return { ...state, PUBLISH_STATUS: "Loading" };
@@ -135,3 +140,4 @@ const IdeaSlice = createSlice({
 });
 
 export default IdeaSlice.reducer;
+export const { pushId } = IdeaSlice.actions;

@@ -207,3 +207,66 @@ export const StyledIdeas = StyleSheet.create({
     padding: 10,
   },
 });
+
+export const StyledIdeaCInput = StyleSheet.create({
+  container: {
+    position: "relative",
+    gap: 10,
+    // marginTop: 20,
+  },
+  InputCont: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    gap: 10,
+    padding: 8,
+  },
+  input: {
+    padding: 4,
+    color: "#fff",
+    fontWeight: "600",
+    width: "100%",
+  },
+  icons: {
+    flexDirection: "row",
+    gap: 16,
+    alignItems: "center",
+  },
+  button: {
+    alignItems: "center",
+    padding: 5,
+    borderRadius: 4,
+    backgroundColor: "blue",
+    width: 100,
+    marginRight: 3,
+  },
+  text: {
+    color: "#fff",
+    fontWeight: "500",
+  },
+  commentsCon: {
+    paddingBottom: 80,
+    position: "relative",
+    width: "100%",
+  },
+  infoHeader: {
+    flexDirection: "row",
+    padding: 16,
+    gap: 8,
+    alignItems: "center",
+  },
+  username: {
+    color: "#fff",
+    fontSize: 16,
+  },
+  timeForm: {
+    color: globalStyles.colors.neutral500,
+    fontSize: 13,
+  },
+  desc: {
+    color: "#fff",
+  },
+  descCon: {
+    padding: 10,
+    gap: 8,
+  },
+});

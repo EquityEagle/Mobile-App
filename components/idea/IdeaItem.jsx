@@ -13,11 +13,16 @@ import { ActionButton, Divider } from "../../libs";
 import { formatTimestamp } from "../../libs/functions";
 import { FullImageModal, IdeaPressModal } from "../../modals";
 import { useIdeaPressModal } from "../../hook";
+import { useNavigation } from "@react-navigation/native";
+import { useDispatch } from "react-redux";
+import { pushId } from "../../redux/ideaSlice";
 
 const IdeaItem = ({ idea }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const pressmoal = useIdeaPressModal();
-  //   console.log("idea:", idea.image);
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
+
   return (
     <View style={StyledIdeas.ideaContainer}>
       <View style={StyledIdeas.header}>
@@ -44,14 +49,22 @@ const IdeaItem = ({ idea }) => {
         </TouchableOpacity>
       </View>
       <Divider />
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          dispatch(pushId(idea._id));
+          navigation.navigate("Idea");
+        }}
+      >
         <View style={StyledIdeas.details}>
           <Text style={StyledIdeas.pairText}>{idea.pair}</Text>
           <Text style={StyledIdeas.detailsText}>{idea.desc}</Text>
         </View>
         <TouchableOpacity
           style={{ padding: 20 }}
-          onPress={() => setModalVisible(true)}
+          onPress={(e) => {
+            e.stopPropagation();
+            setModalVisible(true);
+          }}
           onLongPress={pressmoal.onOpen}
         >
           <Image source={{ uri: idea.image }} style={StyledIdeas.detailsImg} />

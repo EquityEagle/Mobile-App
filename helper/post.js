@@ -15,4 +15,9 @@ export async function StarSetup(setupId, userId) {
   return response?.data;
 }
 
-// export const
+export async function LikeSetupcomments(commentId, userId) {
+  const response = await axios.patch(
+    `${BASE_URL}/setup/${commentId}/like/${userId}`
+  );
+  return response?.data;
+}

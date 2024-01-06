@@ -4,3 +4,4 @@ export { default as DashBoard } from "./user/DashBoard";
 export { default as Chat } from "./chat/Chat";
 export { default as Idea } from "./idea/Idea";
 export { default as Mertix } from "./metrix/Metrix";
+export { default as ViewedItem } from "./idea/ViewedItem";

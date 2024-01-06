@@ -5,3 +5,4 @@ export { default as CreateModalNode } from "./modal/CreateModalNode";
 export { default as JournalModal } from "./modal/JournalModal";
 export { default as MetrixContainer } from "./metrix/MetrixContainer";
 export { default as IdeasFeed } from "./idea/IdeasFeed";
+export { default as Viewed } from "./idea/Viewed";

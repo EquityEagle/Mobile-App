@@ -1,14 +1,22 @@
 import { StyleSheet, ToastAndroid } from "react-native";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Chat, DashBoard, Idea, Login, Mertix, Register } from "./pages";
+import {
+  Chat,
+  DashBoard,
+  Idea,
+  Login,
+  Mertix,
+  Register,
+  ViewedItem,
+} from "./pages";
 import { BottomNav, Dash } from "./components";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { globalStyles } from "./styles/global";
 import { findAllAccount } from "./redux/accounts";
 import * as SplashScreen from "expo-splash-screen";
-import { DashImg, HeaderTitle } from "./components/headerIcon/Dash";
+import { DashImg, HeaderTitle, IdeaLeft } from "./components/headerIcon/Dash";
 
 // SplashScreen.preventAutoHideAsync();
 // setTimeout(SplashScreen.hideAsync, 3000);
@@ -29,13 +37,13 @@ export default function App() {
     }
   }, [auth.userLoaded]);
 
-  useEffect(() => {
-    if (auth.userLoaded) {
-      dispatch(findAllAccount(userId));
-    } else {
-      return ToastAndroid.show("Login to see accounts", ToastAndroid.SHORT);
-    }
-  }, [auth.userLoaded]);
+  // useEffect(() => {
+  //   if (auth.userLoaded) {
+  //     dispatch(findAllAccount(userId));
+  //   } else {
+  //     return ToastAndroid.show("Login to see accounts", ToastAndroid.SHORT);
+  //   }
+  // }, [auth.userLoaded]);
 
   return (
     <Stack.Navigator>
@@ -63,6 +71,16 @@ export default function App() {
         component={Idea}
       />
       <Stack.Screen name="Chats" options={{ title: "" }} component={Chat} />
+      <Stack.Screen
+        name="Idea"
+        options={{
+          title: "Idea",
+          headerStyle: { backgroundColor: "#000" },
+          headerTitleStyle: { color: "#fff" },
+          headerLeft: () => <IdeaLeft />,
+        }}
+        component={ViewedItem}
+      />
       <Stack.Screen
         name="Metrix"
         options={{

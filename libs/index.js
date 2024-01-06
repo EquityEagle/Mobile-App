@@ -12,3 +12,4 @@ export { default as PriceChart } from "./components/PriceChart";
 export { default as ActionButton } from "./components/ActionButton";
 export { default as ActionModal } from "./components/ActionModal";
 export { default as PairSelect } from "./components/PairSelect";
+export { default as CommentActionButton } from "./components/CommentActionButton";
